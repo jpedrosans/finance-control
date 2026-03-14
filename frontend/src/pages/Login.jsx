@@ -4,7 +4,7 @@ import './Login.css'
 function Login () {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-
+    const [showPassword, setShowPassword] = useState(false)
     return (
         <div className="login-container">
             <div className="login-box">
@@ -18,11 +18,19 @@ function Login () {
                 </div>
                 <div className="field">
                     <input 
-                        type="password"
+                        type={showPassword ? "text" : "password"} 
                         placeholder="digite sua senha"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
+                    <span 
+                        className="eye-icon"
+                        onMouseDown={() => setShowPassword(true)}
+                        onMouseUp={() => setShowPassword(false)}
+                        onMouseLeave={() => setShowPassword(false)} 
+                    >
+                {showPassword ? "👀" : "🔍"} 
+            </span>
                 </div> 
 
                 <button>Entrar</button>
